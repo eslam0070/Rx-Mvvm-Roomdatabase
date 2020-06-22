@@ -1,24 +1,17 @@
-# RxJava: Reactive Extensions for the JVM
+## Android MVVM
 
-<a href='https://travis-ci.org/ReactiveX/RxJava/builds'><img src='https://travis-ci.org/ReactiveX/RxJava.svg?branch=3.x'></a>
-[![codecov.io](http://codecov.io/github/ReactiveX/RxJava/coverage.svg?branch=3.x)](https://codecov.io/gh/ReactiveX/RxJava/branch/3.x)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.reactivex.rxjava3/rxjava/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.reactivex.rxjava3/rxjava)
+MVVM stands for Model, View, ViewModel.
 
-RxJava is a Java VM implementation of [Reactive Extensions](http://reactivex.io): a library for composing asynchronous and event-based programs by using observable sequences.
+* Model
+      This holds the data of the application. It cannot directly talk to the View. Generally, it’s recommended to expose the data to the ViewModel through Observables.
 
-It extends the [observer pattern](http://en.wikipedia.org/wiki/Observer_pattern) to support sequences of data/events and adds operators that allow you to compose sequences together declaratively while abstracting away concerns about things like low-level threading, synchronization, thread-safety and concurrent data structures.
+* View
+      It represents the UI of the application devoid of any Application Logic. It observes the ViewModel.
 
-#### Version 3.x ([Javadoc](http://reactivex.io/RxJava/3.x/javadoc/))
-
-- single dependency: [Reactive-Streams](https://github.com/reactive-streams/reactive-streams-jvm)  
-- Java 8+ ([Android](https://github.com/ReactiveX/RxAndroid) desugar friendly)
-- Java 8 lambda-friendly API
-- fixed API mistakes and many limits of RxJava 2
-- intended to be a replacement for RxJava 2 with relatively few binary incompatible changes
-- non-opinionated about the source of concurrency (threads, pools, event loops, fibers, actors, etc.)
-- async or synchronous execution
-- virtual time and schedulers for parameterized concurrency
-- test and diagnostic support via test schedulers, test consumers and plugin hooks
+* ViewModel
+      It acts as a link between the Model and the View. It’s responsible for transforming the data from the Model. It provides data streams to the View. It also uses hooks or callbacks to update the View. It’ll ask for the data from the Model.
+      
+The following flow illustrates the core MVVM Pattern.
 
 ### Library reference resources:
 1. RxJava2: https://github.com/amitshekhariitbhu/RxJava2-Android-Samples
